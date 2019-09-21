@@ -4,6 +4,7 @@
 
 #include "range/chain_from_iterable.hpp"
 #include "range/enumerate.hpp"
+#include "range/filter.hpp"
 #include "range/map.hpp"
 #include "range/range.hpp"
 #include "range/reverse.hpp"

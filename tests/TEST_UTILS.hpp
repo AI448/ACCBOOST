@@ -99,10 +99,10 @@ namespace TEST_UTILS
       std::apply([&](const auto&... y){TEST_UTILS::_test::impl(os, y...);}, x);
       os << ')';
     }else{
+      serialize(os, '[');      
       bool first = true;
       for(auto&& v: x){
         if(first){
-          serialize(os, '[');
           first = false;
         }else{
           serialize(os, ',');

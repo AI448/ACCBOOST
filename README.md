@@ -7,6 +7,9 @@
 * [enumerate](#enumerate)
 * [map](#map)
 * [reverse](#reverse)
+* [in](#in)
+* [all, any](#all,any)
+* [filter](#filter)
 
 ## range
 
@@ -223,3 +226,129 @@ Result
 2
 1
 ```
+
+## in
+
+## Example for tuples
+Code
+```cpp
+#include <iostream>
+#include <tuple>
+#include "ACCBOOST/utility.hpp"
+using namespace ACCBOOST;
+int main()
+{
+  std::tuple<int, double, double> a = {1, 1e-2, 0};
+  std::tuple<int, double, double> b = {2, 1e-2, -1e-1};
+  std::cout << in(0, a) << std::endl;
+  std::cout << in(0, b) << std::endl;  
+}
+```
+Result
+```
+1
+0
+```
+
+## Example for iterable objects
+Code
+```
+#include <iostream>
+#include <vector>
+#include "ACCBOOST/utility.hpp"
+using namespace ACCBOOST;
+int main()
+{
+  std::vector<double> a = {1, 1e-2, 0};
+  std::cout << in(1e-2, a) << std::endl;
+  std::cout << in(3, a) << std::endl;
+}
+```
+Result
+```
+1
+0
+```
+
+## all,any
+
+## Example for tuples
+Code
+```cpp
+#include <iostream>
+#include <tuple>
+#include "ACCBOOST/utility.hpp"
+using namespace ACCBOOST;
+int main()
+{
+  std::tuple<int, double, char> a = {1, 1e-2, 0};
+  std::tuple<int, double, char> b = {0, 0.0, 0};  
+  std::cout << all([](auto&& x){return x == 0;}, a) << std::endl;
+  std::cout << all([](auto&& x){return x == 0;}, b) << std::endl;  
+  std::cout << any([](auto&& x){return x == 0;}, a) << std::endl;
+  std::cout << any([](auto&& x){return x == 0;}, b) << std::endl;
+}
+```
+Result
+```
+0
+1
+1
+1
+```
+
+### Example for iterable objects
+Code
+```cpp
+#include <iostream>
+#include <vector>
+#include "ACCBOOST/utility.hpp"
+using namespace ACCBOOST;
+int main()
+{
+  std::vector<int> a = {1, 2, 3, 4};
+  std::vector<int> b = {2, 4};
+  std::vector<int> c = {1, 3, 5};
+  std::cout << all([](auto&& x){return x % 2 == 0;}, a) << std::endl;
+  std::cout << all([](auto&& x){return x % 2 == 0;}, b) << std::endl;
+  std::cout << all([](auto&& x){return x % 2 == 0;}, c) << std::endl;    
+  std::cout << any([](auto&& x){return x % 2 == 0;}, a) << std::endl;
+  std::cout << any([](auto&& x){return x % 2 == 0;}, b) << std::endl;
+  std::cout << any([](auto&& x){return x % 2 == 0;}, c) << std::endl;
+}
+```
+Result
+```
+0
+1
+0
+1
+1
+0
+```
+
+## filter
+
+### Example for iterable object
+Code
+```cpp
+#include <iostream>
+#include <vector>
+#include "ACCBOOST/utility.hpp"
+using namespace ACCBOOST;
+int main()
+{
+  std::vector<int> a = {0, 1, 2, 3, 4, 5, 6};
+  for(auto&& y: filter([](auto&& x){return x % 3 == 0;}, a)){
+    std::cout << y << std::endl;
+  }
+  return 0;
+}
+```
+Result
+```
+0
+3
+6
+```
+
