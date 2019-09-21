@@ -127,6 +127,24 @@ namespace ACCBOOST
     return ACCBOOST::_range_enumerate::EnumerateRange<ACCBOOST::capture_of<X&&>...>(std::forward<X>(x)...);
   }
 
+  template<class X>
+  decltype(auto) enumerate(const std::initializer_list<X>& x)
+  {
+    return ACCBOOST::_range_enumerate::EnumerateRange<const std::initializer_list<X>&>(x);
+  }
+
+  template<class X>
+  decltype(auto) enumerate(std::initializer_list<X>& x)
+  {
+    return ACCBOOST::_range_enumerate::EnumerateRange<std::initializer_list<X>&>(x);
+  }
+
+  template<class X>
+  decltype(auto) enumerate(std::initializer_list<X>&& x)
+  {
+    return ACCBOOST::_range_enumerate::EnumerateRange<std::initializer_list<X>>(std::move(x));
+  }
+
 }
 
 

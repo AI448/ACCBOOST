@@ -60,6 +60,30 @@ namespace ACCBOOST
     return result_t(std::forward<X>(x));
   }
 
+  template<class X,
+	    ACCBOOST_REQUIRES(ACCBOOST::is_range_v<std::remove_reference_t<X>>)>
+  decltype(auto) chain_from_iterable(const std::initializer_list<X>& x)
+  {
+    using result_t = ACCBOOST::_chain_from_iterable::ChainFromIterableRange<const std::initializer_list<X>&>;
+    return result_t(x);
+  }
+
+  template<class X,
+	    ACCBOOST_REQUIRES(ACCBOOST::is_range_v<std::remove_reference_t<X>>)>
+  decltype(auto) chain_from_iterable(std::initializer_list<X>& x)
+  {
+    using result_t = ACCBOOST::_chain_from_iterable::ChainFromIterableRange<std::initializer_list<X>&>;
+    return result_t(x);
+  }
+
+  template<class X,
+	    ACCBOOST_REQUIRES(ACCBOOST::is_range_v<std::remove_reference_t<X>>)>
+  decltype(auto) chain_from_iterable(std::initializer_list<X>&& x)
+  {
+    using result_t = ACCBOOST::_chain_from_iterable::ChainFromIterableRange<std::initializer_list<X>>;
+    return result_t(std::move(x));
+  }
+
 }
 
 

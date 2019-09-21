@@ -76,6 +76,24 @@ namespace ACCBOOST
     return ACCBOOST::_range_filter::FilterRange<ACCBOOST::capture_of<F&&>, ACCBOOST::capture_of<X&&>>(std::forward<F>(f), std::forward<X>(x));
   }
 
+  template<class F, class X>
+  decltype(auto) filter(F&& f, const std::initializer_list<X>& x)
+  {
+    return ACCBOOST::_range_filter::FilterRange<ACCBOOST::capture_of<F&&>, const std::initializer_list<X>&>(std::forward<F>(f), x);
+  }
+
+  template<class F, class X>
+  decltype(auto) filter(F&& f, std::initializer_list<X>& x)
+  {
+    return ACCBOOST::_range_filter::FilterRange<ACCBOOST::capture_of<F&&>, std::initializer_list<X>&>(std::forward<F>(f), x);
+  }
+
+  template<class F, class X>
+  decltype(auto) filter(F&& f, std::initializer_list<X>&& x)
+  {
+    return ACCBOOST::_range_filter::FilterRange<ACCBOOST::capture_of<F&&>, std::initializer_list<X>>(std::forward<F>(f), std::move(x));
+  }
+
 }
 
 #endif

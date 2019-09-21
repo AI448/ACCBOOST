@@ -121,6 +121,24 @@ namespace ACCBOOST
     return ACCBOOST::map(ACCBOOST::_range_map::make_one_argument_function(std::forward<F>(f)), ACCBOOST::zip(std::forward<X>(x)...));
   }
 
+  template<class F, class X>
+  decltype(auto) map(F&& f, const std::initializer_list<X>& x)
+  {
+    return ACCBOOST::_range_map::MapRange<ACCBOOST::capture_of<F&&>, const std::initializer_list<X>&>(std::forward<F>(f), x);
+  }
+
+  template<class F, class X>
+  decltype(auto) map(F&& f, std::initializer_list<X>& x)
+  {
+    return ACCBOOST::_range_map::MapRange<ACCBOOST::capture_of<F&&>, std::initializer_list<X>&>(std::forward<F>(f), x);
+  }
+
+  template<class F, class X>
+  decltype(auto) map(F&& f, std::initializer_list<X>&& x)
+  {
+    return ACCBOOST::_range_map::MapRange<ACCBOOST::capture_of<F&&>, std::initializer_list<X>>(std::forward<F>(f), std::move(x));
+  }
+
 }
 
 

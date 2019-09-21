@@ -27,8 +27,8 @@ namespace ACCBOOST
 
       using iterator_category = std::forward_iterator_tag;
       using difference_type = std::ptrdiff_t;
-      using value_type = typename IteratorT::value_type;
-      using reference = typename IteratorT::reference;
+      using value_type = typename std::iterator_traits<IteratorT>::value_type;
+      using reference = typename std::iterator_traits<IteratorT>::reference;
       using pointer = decltype(ACCBOOST::make_arrow_wrapper(std::declval<reference&&>()));
 
     private:
@@ -113,8 +113,8 @@ namespace ACCBOOST
 
       using iterator_category = std::forward_iterator_tag;
       using difference_type = std::ptrdiff_t;
-      using value_type = typename IteratorT::value_type;
-      using reference = typename IteratorT::reference;
+      using value_type = typename std::iterator_traits<IteratorT>::value_type;
+      using reference = typename std::iterator_traits<IteratorT>::reference;
       using pointer = decltype(ACCBOOST::make_arrow_wrapper(std::declval<reference&&>()));
 
       bool operator==(const FilterIterator<FunctorT, IteratorT, LastIteratorT>& rhs) const noexcept

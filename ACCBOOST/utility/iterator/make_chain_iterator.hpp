@@ -27,8 +27,8 @@ namespace ACCBOOST
 
       using iterator_category = std::forward_iterator_tag;
       using difference_type = std::ptrdiff_t;
-      using value_type = typename SubIteratorT::value_type;
-      using reference = typename SubIteratorT::reference;
+      using value_type = typename std::iterator_traits<SubIteratorT>::value_type;
+      using reference = typename std::iterator_traits<SubIteratorT>::reference;
       using pointer =  decltype(ACCBOOST::make_arrow_wrapper(std::declval<reference&&>()));
 
     private:
@@ -149,8 +149,8 @@ namespace ACCBOOST
 
       using iterator_category = std::forward_iterator_tag;
       using difference_type = std::ptrdiff_t;
-      using value_type = typename SubIteratorT::value_type;
-      using reference = typename SubIteratorT::reference;
+      using value_type = typename std::iterator_traits<SubIteratorT>::value_type;
+      using reference = typename std::iterator_traits<SubIteratorT>::reference;
       using pointer =  decltype(ACCBOOST::make_arrow_wrapper(std::declval<reference&&>()));
 
       bool operator==(const ChainedIterator<IteratorT, LastIteratorT, SubIteratorT, LastSubIteratorT>& rhs) const noexcept

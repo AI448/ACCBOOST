@@ -41,25 +41,29 @@ namespace ACCBOOST
       decltype(auto) begin()
       {
         using std::end;
-        return ACCBOOST::make_reverse_iterator(--end(range_));
+        auto i = end(range_);
+        return ACCBOOST::make_reverse_iterator(std::move(--i));
       }
 
       decltype(auto) end()
       {
         using std::begin;
-        return ACCBOOST::make_reverse_iterator(--begin(range_));
+        auto i = begin(range_);
+        return ACCBOOST::make_reverse_iterator(std::move(--i));
       }
 
       decltype(auto) begin() const
       {
         using std::end;
-        return ACCBOOST::make_reverse_iterator(--end(range_));
+        auto i = end(range_);
+        return ACCBOOST::make_reverse_iterator(std::move(--i));
       }
 
       decltype(auto) end() const
       {
         using std::begin;
-        return ACCBOOST::make_reverse_iterator(--begin(range_));
+        auto i = begin(range_);
+        return ACCBOOST::make_reverse_iterator(std::move(--i));
       }
 
     };
@@ -87,8 +91,25 @@ namespace ACCBOOST
     return ACCBOOST::zip(ACCBOOST::reverse(std::forward<X>(x))...);
   }
 
-}
+  template<class X>
+  decltype(auto) reverse(const std::initializer_list<X>& x)
+  {
+    return ACCBOOST::_range_reverse::ReverseRange<const std::initializer_list<X>&>(x);
+  }
 
+  template<class X>
+  decltype(auto) reverse(std::initializer_list<X>& x)
+  {
+    return ACCBOOST::_range_reverse::ReverseRange<std::initializer_list<X>&>(x);
+  }
+
+  template<class X>
+  decltype(auto) reverse(std::initializer_list<X>&& x)
+  {
+    return ACCBOOST::_range_reverse::ReverseRange<std::initializer_list<X>>(std::move(x));
+  }
+
+}
 
 
 #endif
