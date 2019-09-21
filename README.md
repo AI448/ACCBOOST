@@ -2,6 +2,12 @@
 
  ACCBOOST is set of utility functions like Python built-in functions.
 
+* [range](#range)
+* [zip](#zip)
+* [enumerate](#enumerate)
+* [map](#map)
+* [reverse](#reverse)
+
 ## range
 
 ### Example
@@ -171,4 +177,49 @@ Result
 1.1
 2.2
 3.3
+```
+## reverse
+
+### Example for tuple
+Code
+```cpp
+#include <iostream>
+#include <tuple>
+#include "ACCBOOST/utility.hpp"
+using namespace ACCBOOST;
+int main()
+{
+  std::tuple<std::string, double> a = {"A", 0.1};
+  auto b = reverse(a);
+  std::cout << std::get<0>(b) << std::endl;
+  std::cout << std::get<1>(b) << std::endl;
+}
+```
+Result
+```
+0.1
+A
+```
+
+### Example for iterable objects
+Code
+```cpp
+#include <iostream>
+#include <vector>
+#include "ACCBOOST/utility.hpp"
+using namespace ACCBOOST;
+int main()
+{
+  std::vector<int> a = {1, 2, 3, 4};
+  for(auto&& x: reverse(a)){
+    std::cout << x << std::endl;
+  }
+}
+```
+Result
+```
+4
+3
+2
+1
 ```
