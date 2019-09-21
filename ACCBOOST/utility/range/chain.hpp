@@ -17,7 +17,7 @@ namespace ACCBOOST
      ACCBOOST_REQUIRES((... && std::is_same_v<X, Y>))>
   decltype(auto) chain(X&& x, Y&&... y)
   {
-    return ACCBOOST::chain_from_iterable(ACCBOOST::StaticArray<ACCBOOST::capture_of<X>, 1 + sizeof...(Y)>{std::forward<X>(x), std::forward<Y>(y)...});
+    return ACCBOOST::chain_from_iterable(ACCBOOST::StaticArray<ACCBOOST::capture_of<X&&>, 1 + sizeof...(Y)>{std::forward<X>(x), std::forward<Y>(y)...});
   }
 
 }
