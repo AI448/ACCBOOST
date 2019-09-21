@@ -11,7 +11,7 @@ namespace ACCBOOST::META
 
   /// 型リスト．
   template<class... T>
-  struct list;
+  struct list {};
 
   /// list の要素数を返すメタ関数．
   template<class List>
