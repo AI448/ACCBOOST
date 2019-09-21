@@ -1,4 +1,11 @@
-TESTS=test_zip test_enumerate test_range test_map test_reverse test_chain test_chain_from_iterable
+TESTS=test_zip\
+test_enumerate\
+test_range\
+test_map\
+test_reverse\
+test_chain\
+test_chain_from_iterable\
+test_filter
 
 RESULTS=$(patsubst %, %.result, $(TESTS))
 OUTS=$(patsubst %, %.out, $(TESTS))
