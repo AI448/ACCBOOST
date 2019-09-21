@@ -7,6 +7,7 @@
 #include "tuple/enumerate.hpp"
 #include "tuple/map.hpp"
 #include "tuple/reverse.hpp"
+#include "tuple/search.hpp"
 #include "tuple/zip.hpp"
 
 
