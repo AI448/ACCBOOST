@@ -29,7 +29,7 @@ namespace ACCBOOST
 
       decltype(auto) operator->() const noexcept
       {
-        return std::addressof(value_);
+        return std::addressof(value_); // note: 戻り値は const pointer となる．
       }
 
     // deleted:

@@ -8,7 +8,7 @@
 * [map](#map)
 * [reverse](#reverse)
 * [in](#in)
-* [all, any](#all,any)
+* [all, any](#allany)
 * [filter](#filter)
 
 ## range
@@ -329,7 +329,7 @@ Result
 
 ## filter
 
-### Example for iterable object
+### Example for iterable objects
 Code
 ```cpp
 #include <iostream>
@@ -351,4 +351,3 @@ Result
 3
 6
 ```
-
