@@ -10,6 +10,7 @@
 * [in](#in)
 * [all, any](#allany)
 * [filter](#filter)
+* [chain_from_iterable](#chain_from_iterable)
 
 ## range
 
@@ -39,7 +40,7 @@ Result
 
 ## zip
 
-### Example for tuples
+### Example of tuples
 Code
 ```cpp
 #include <iostream>
@@ -61,7 +62,7 @@ Result
 0.2 A
 ```
 
-### Example for iterable objects
+### Example of iterable objects
 Code
 ```cpp
 #include <iostream>
@@ -87,7 +88,7 @@ Result
 
 ## enumerate
 
-### Example for tuples
+### Example of tuples
 Code
 ```cpp
 #include <iostream>
@@ -108,7 +109,7 @@ Result
 1 0.1
 ```
 
-### Example for iterable objects
+### Example of iterable objects
 Code
 ```cpp
 #include <iostream>
@@ -134,7 +135,7 @@ Result
 
 ## map
 
-### Example for tuples
+### Example of tuples
 Code
 ```cpp
 #include <iostream>
@@ -157,7 +158,7 @@ Result
 HelloWorld
 ```
 
-### Example for iterable objects
+### Example of iterable objects
 Code
 ```cpp
 #include <iostream>
@@ -183,7 +184,7 @@ Result
 ```
 ## reverse
 
-### Example for tuple
+### Example of tuple
 Code
 ```cpp
 #include <iostream>
@@ -204,7 +205,7 @@ Result
 A
 ```
 
-### Example for iterable objects
+### Example of iterable objects
 Code
 ```cpp
 #include <iostream>
@@ -229,7 +230,7 @@ Result
 
 ## in
 
-## Example for tuples
+## Example of tuples
 Code
 ```cpp
 #include <iostream>
@@ -250,7 +251,7 @@ Result
 0
 ```
 
-## Example for iterable objects
+## Example of iterable objects
 Code
 ```
 #include <iostream>
@@ -272,7 +273,7 @@ Result
 
 ## all,any
 
-## Example for tuples
+## Example of tuples
 Code
 ```cpp
 #include <iostream>
@@ -297,7 +298,7 @@ Result
 1
 ```
 
-### Example for iterable objects
+### Example of iterable objects
 Code
 ```cpp
 #include <iostream>
@@ -329,7 +330,7 @@ Result
 
 ## filter
 
-### Example for iterable objects
+### Example of iterable objects
 Code
 ```cpp
 #include <iostream>
@@ -349,5 +350,33 @@ Result
 ```
 0
 3
+6
+```
+
+## chain_from_iterable
+
+### Example of iterable objects
+Code
+```cpp
+#include <iostream>
+#include <vector>
+#include "ACCBOOST/utility.hpp"
+using namespace ACCBOOST;
+int main()
+{
+  std::vector<std::vector<int>> a = {{1, 2}, {3, 4}, {5, 6}};
+  for(auto&& y: chain_from_iterable(a)){
+    std::cout << y << std::endl;
+  }
+  return 0;
+}
+```
+Result
+```
+1
+2
+3
+4
+5
 6
 ```
