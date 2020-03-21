@@ -76,6 +76,26 @@ namespace ACCBOOST
       std::forward<First>(first), std::forward<Last>(last));
   }
 
+  template<class I, class J,
+	   ACCBOOST_REQUIRES(std::is_integral_v<std::remove_reference_t<I>>),
+    ACCBOOST_REQUIRES(std::is_integral_v<std::remove_reference_t<J>>),
+     ACCBOOST_REQUIRES(std::is_signed_v<std::remove_reference_t<I>> || std::is_signed_v<std::remove_reference_t<J>>)>
+  decltype(auto) range(I&& first, J&& last)
+  {
+    assert(first <= std::numeric_limits<std::intmax_t>::max());
+    assert(last <= std::numeric_limits<std::intmax_t>::max());
+    return ACCBOOST::range(ACCBOOST::make_integer_iterator(std::intmax_t(first)), ACCBOOST::make_integer_iterator(std::intmax_t(last)));
+  }
+
+  template<class I, class J,
+	   ACCBOOST_REQUIRES(std::is_integral_v<std::remove_reference_t<I>>),
+    ACCBOOST_REQUIRES(std::is_integral_v<std::remove_reference_t<J>>),
+     ACCBOOST_REQUIRES(std::is_unsigned_v<std::remove_reference_t<I>> && std::is_unsigned_v<std::remove_reference_t<J>>)>
+  decltype(auto) range(I&& first, J&& last)
+  {
+    return ACCBOOST::range(ACCBOOST::make_integer_iterator(std::uintmax_t(first)), ACCBOOST::make_integer_iterator(std::uintmax_t(last)));
+  }
+
   template<class I,
 	   ACCBOOST_REQUIRES(std::is_integral_v<std::remove_reference_t<I>>),
      ACCBOOST_REQUIRES(std::is_signed_v<std::remove_reference_t<I>>)>
@@ -96,6 +116,11 @@ namespace ACCBOOST
   {
     using integer_t = std::remove_cv_t<std::remove_reference_t<I>>;
     return ACCBOOST::range(ACCBOOST::make_integer_iterator(integer_t(0)), ACCBOOST::make_integer_iterator(std::forward<I>(last)));
+  }
+
+  decltype(auto) range()
+  {
+    return ACCBOOST::range(ACCBOOST::make_integer_iterator(std::uintmax_t(0)), ACCBOOST::make_integer_iterator(std::numeric_limits<std::uintmax_t>::max()));
   }
 
 } // ACCBOOST
