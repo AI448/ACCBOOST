@@ -51,7 +51,7 @@ namespace ACCBOOST
   template<class F, class X>
   bool any(F&& f, const std::initializer_list<X>& x)
   {
-    return in(false, ACCBOOST::map(std::forward<F>(f), x));
+    return in(true, ACCBOOST::map(std::forward<F>(f), x));
   }
 
 }
