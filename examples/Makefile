@@ -22,14 +22,14 @@ RESULTS=$(patsubst %, %.result, $(SAMPLES))
 all: $(EXAMPLE)
 
 $(EXAMPLE): $(RESULTS)
-	echo '# Examples' >$@
+	echo '## Examples' >$@
 	cat $^ >>$@
 
 %.$(EXE): %.cpp
 	g++ -std=c++17 -W -Wall -I.. $< -o $@
 
 %.result: %.$(EXE) %.cpp
-	echo '## $*' | sed s/_/\ /g >$@
+	echo '### $*' | sed s/_/\ /g >$@
 	echo 'Code\n```cpp' >>$@
 	cat $*.cpp >>$@
 	echo '```' >>$@
