@@ -17,9 +17,9 @@ namespace ACCBOOST
       return x == y;
     }
 
-    bool compare_if_comparable(...)
+    static inline constexpr std::false_type compare_if_comparable(...)
     {
-      return false;
+      return {};
     }
 
   }

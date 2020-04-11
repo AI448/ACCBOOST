@@ -2,10 +2,9 @@
 
 # ACCBOOST
 
- ACCBOOST is set of utility functions like Python built-in functions.
+ ACCBOOST is set of utility functions for c++17 like Python built-in functions.
 
-
-
+- [Requirements](#requirements)
 - [Examples](#examples)
     - [range](#range)
     - [zip for iterables](#zip-for-iterables)
@@ -24,6 +23,12 @@
     - [all any for tuples](#all-any-for-tuples)
     - [filter for iterables](#filter-for-iterables)
     - [chain for iterable](#chain-for-iterable)
+
+## Requirements
+
+* g++ -std=c++17
+* clang++ -std=c++17
+* icl /std:c++17
 
 
 ## Examples

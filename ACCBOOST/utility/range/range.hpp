@@ -118,7 +118,7 @@ namespace ACCBOOST
     return ACCBOOST::range(ACCBOOST::make_integer_iterator(integer_t(0)), ACCBOOST::make_integer_iterator(std::forward<I>(last)));
   }
 
-  decltype(auto) range()
+  static inline decltype(auto) range()
   {
     return ACCBOOST::range(ACCBOOST::make_integer_iterator(std::uintmax_t(0)), ACCBOOST::make_integer_iterator(std::numeric_limits<std::uintmax_t>::max()));
   }
