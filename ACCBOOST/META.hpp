@@ -8,6 +8,7 @@ namespace ACCBOOST::META{}
 #include "META/expression_traits.hpp"
 #include "META/is_template_of.hpp"
 #include "META/is_base_template_of.hpp"
+#include "META/to_string.hpp"
 
 
 #endif
