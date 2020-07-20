@@ -8,6 +8,7 @@
 #include "tuple/map.hpp"
 #include "tuple/reverse.hpp"
 #include "tuple/search.hpp"
+#include "tuple/slice.hpp"
 #include "tuple/zip.hpp"
 
 

@@ -141,6 +141,24 @@ namespace ACCBOOST::META
   #undef ACCBOOST_META_DEFINE_EXPRESSION_TRAITS_2
   #undef ACCBOOST_META_DEFINE_EXPRESSION_TRAITS_N
 
+  template<class... T>
+  struct is_constructible;
+
+  template<class T, class... U>
+  struct is_constructible<T, U...>: std::is_constructible<T, U...> {};
+
+  template<class T, class... U>
+  struct is_constructible<ACCBOOST::META::list<T, U...>>: std::is_constructible<T, U...> {};
+
+  template<class... T>
+  struct is_nothrow_constructible;
+
+  template<class T, class... U>
+  struct is_nothrow_constructible<T, U...>: std::is_nothrow_constructible<T, U...> {};
+
+  template<class T, class... U>
+  struct is_nothrow_constructible<ACCBOOST::META::list<T, U...>>: std::is_nothrow_constructible<T, U...> {};
+
 }
 
 #endif
